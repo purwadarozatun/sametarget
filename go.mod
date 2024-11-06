@@ -5,9 +5,13 @@ go 1.21.3
 require (
 	github.com/MicahParks/keyfunc/v2 v2.1.0 // indirect
 	github.com/andybalholm/brotli v1.1.1 // indirect
+	github.com/cbroglie/mustache v1.4.0 // indirect
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/gofiber/contrib/jwt v1.0.10 // indirect
 	github.com/gofiber/fiber/v2 v2.52.5 // indirect
+	github.com/gofiber/template v1.8.3 // indirect
+	github.com/gofiber/template/mustache/v2 v2.0.12 // indirect
+	github.com/gofiber/utils v1.1.0 // indirect
 	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/golang-jwt/jwt/v5 v5.2.1 // indirect
 	github.com/google/uuid v1.6.0 // indirect
