@@ -1,0 +1,35 @@
+POST http://localhost:3000/register HTTP/1.1
+content-type: application/json
+
+{
+    "name": "Purwa Darozatun",
+    "username": "theakistea",
+    "email": "purwadarozatunakis@gmail.com",
+    "password" : "password"
+    
+}
+
+###
+
+POST http://localhost:3000/login HTTP/1.1
+content-type: application/json
+
+{
+    "username": "theakistea", 
+    "password": "password"
+}
+
+
+### 
+GET http://localhost:3000/profile HTTP/1.1
+authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUHVyd2EgRGFyb3phdHVuIiwidXNlcm5hbWUiOiJ0aGVha2lzdGVhIn0.8UFJvSO5hvQRAs9IgxSL8zi91x34qqLOtqxryrPN6Ok
+
+###
+POST http://localhost:3000/refresh-token HTTP/1.1
+authorization : Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUHVyd2EgRGFyb3phdHVuIiwidXNlcm5hbWUiOiJ0aGVha2lzdGVhIn0.8UFJvSO5hvQRAs9IgxSL8zi91x34qqLOtqxryrPN6Ok
+content-type: application/json
+
+{
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiUHVyd2EgRGFyb3phdHVuIiwidXNlcm5hbWUiOiJ0aGVha2lzdGVhIn0.8UFJvSO5hvQRAs9IgxSL8zi91x34qqLOtqxryrPN6Ok"
+}
+

@@ -3,9 +3,8 @@ package middlewares
 import (
 	"fmt"
 
-	"codeku.id/sametarget/model"
+	"codeku.id/sametarget/helpers"
 	"github.com/gofiber/fiber/v2"
-	"github.com/golang-jwt/jwt"
 )
 
 // Middleware JWT function
@@ -18,9 +17,11 @@ func NewAuthMiddleware(secret string) fiber.Handler {
 		// Get the JWT token from the request header "Authorization
 		token := c.Get("Authorization")
 
+		fmt.Println(token)
+
 		// remove the "Bearer " prefix from the token
 		token = token[7:]
-		tokenClaims, err := decode(token)
+		tokenClaims, err := helpers.Decode(token)
 		if err != nil {
 			fmt.Println(err)
 			return c.Status(fiber.StatusUnauthorized).JSON(fiber.Map{
@@ -29,26 +30,5 @@ func NewAuthMiddleware(secret string) fiber.Handler {
 		}
 		c.Locals("user", tokenClaims)
 		return c.Next()
-	}
-}
-
-func decode(tokenString string) (model.User, error) {
-
-	token, _, err := new(jwt.Parser).ParseUnverified(tokenString, jwt.MapClaims{})
-	if err != nil {
-		return model.User{}, err
-	}
-
-	if claims, ok := token.Claims.(jwt.MapClaims); ok {
-
-		user := model.User{
-			Username: claims["preferred_username"].(string),
-			Email:    claims["email"].(string),
-			Name:     claims["name"].(string),
-		}
-
-		return user, nil
-	} else {
-		return model.User{}, fmt.Errorf("invalid token")
 	}
 }
